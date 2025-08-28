@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LangGraph Learning Repository
 
-## Getting Started
+This repository contains a series of examples demonstrating how to use [LangGraph](https://github.com/langchain-ai/langgraph) - a library for building stateful, multi-actor applications with LLMs.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+LangGraph extends LangChain's capabilities by enabling the creation of complex, multi-step workflows that can maintain state between steps. This repository provides progressive examples from basic state management to sophisticated agent interactions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup Instructions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone this repository:
+   ```bash
+   git clone <repository-url>
+   cd langgraph
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-## Learn More
+3. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Set up your OpenAI API key in a `.env` file:
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Example Descriptions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 01_bmi_workflow.py
+**Topic: Basic State Management**  
+A simple example that calculates BMI based on weight and height, demonstrating the fundamental concepts of StateGraph, nodes, and edges in LangGraph.
 
-## Deploy on Vercel
+### 02_llm_workflow.py
+**Topic: Integrating Language Models**  
+Shows how to incorporate a language model (OpenAI) into a LangGraph workflow to answer questions.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 03_prompt_chaining.py
+**Topic: Sequential LLM Calls**  
+Demonstrates prompt chaining by creating a blog post generation workflow with separate outline and content creation steps.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 04_batmans_workflow.py
+**Topic: Parallel Processing**  
+Illustrates parallel node execution by calculating multiple cricket statistics simultaneously before generating a summary.
+
+### 05_essay_analyser.py
+**Topic: Structured Output & Aggregation**  
+Shows how to use structured outputs with Pydantic models to analyze essays from multiple perspectives and aggregate the results.
+
+### 06_quadratic_eqn.py
+**Topic: Conditional Branching**  
+Implements a quadratic equation solver with different paths based on the discriminant value, demonstrating conditional edges.
+
+### 07_review_reply.py
+**Topic: Advanced Branching Logic**  
+Creates a customer review response system that analyzes sentiment and generates appropriate replies based on the analysis.
+
+### 08_X_post_generator.py
+**Topic: Iterative Refinement**  
+Builds a tweet generator with evaluation and optimization in a feedback loop, showing how to implement iterative workflows.
+
+### 09_chatbot.py
+**Topic: Message Handling**  
+Introduces message-based state management for creating a simple chatbot with memory.
+
+### 10_persistence.py
+**Topic: State Persistence**  
+Demonstrates how to implement persistence in LangGraph to save and retrieve workflow state across multiple sessions.
+
+### 11_tools.py
+**Topic: Tool Integration**  
+Shows how to incorporate external tools (search, calculator, stock price API) into a LangGraph workflow for enhanced capabilities.
+
+## Key Concepts
+
+- **StateGraph**: The core component for defining workflow structure
+- **Nodes**: Functions that process and transform state
+- **Edges**: Connections that define the flow between nodes
+- **Conditional Routing**: Logic for determining the next node based on the current state
+- **State Persistence**: Saving and retrieving workflow progress
+- **Tool Integration**: Incorporating external capabilities into LLM workflows
+
+## Resources
+
+- [LangGraph Documentation](https://github.com/langchain-ai/langgraph)
+- [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
+- [OpenAI API Documentation](https://platform.openai.com/docs/introduction)
